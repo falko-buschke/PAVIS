@@ -3,7 +3,7 @@ library(maps)
 library(RColorBrewer)
 
 # Read the data from the cleaned PAVIS Database
-pavis <- read.csv("PAVIS.csv", na.strings = "NULL")
+pavis <- read.csv("PAVIS_v0.1.csv", na.strings = "NULL")
 
 # Create a new
 png(filename="Composite.png",width=28,height=28,units="cm",res=300)
