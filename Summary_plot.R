@@ -122,8 +122,10 @@ brks <- as.numeric(cut(pas, c(0,1,2,5,10,25,50)))
 # Labels for the legend
 leg.txt <- c("<1", "1-2", "2-5", "5-10", "10-25", ">25")
 
-# Match the values of each country to the colour ramp according to the predfiend breaks
-colss <- brks[match(map("world", plot=FALSE)$names, country.name)]
+# Match the values of each country to the colour ramp according to the predefined breaks
+# The maps package has a weird notation for certain countries with multiple geometries, hence
+# The need to extract text before a colon.
+colss <- brks[match(gsub(":.*","",map("world", plot=FALSE)$names), country.name)]
 
 # Map the number of protected areas with visitor data per country
 map("world", fill=T, add=T,col=ramp[colss], lwd=1, border="white")#,xlim=c(-20,55), ylim=c(-40,40))
