@@ -5,7 +5,7 @@ library(RColorBrewer)
 # Read the data from the cleaned PAVIS Database
 pavis <- read.csv("PAVIS_v0.1.csv", na.strings = "NULL")
 
-# Create a new
+# Create a new plot device
 png(filename="Composite.png",width=28,height=28,units="cm",res=300)
 
 #Set panel layout (bottom-left is left open to accommodate labels from panel G)
@@ -129,6 +129,8 @@ colss <- brks[match(gsub(":.*","",map("world", plot=FALSE)$names), country.name)
 
 # Map the number of protected areas with visitor data per country
 map("world", fill=T, add=T,col=ramp[colss], lwd=1, border="white")#,xlim=c(-20,55), ylim=c(-40,40))
+# Add a polygon for Lesotho, which is covered by the South Africa Polygon
+map("world", "Lesotho", fill=T, add=T,col="lightgrey", lwd=1, border="white")
 
 # Plot a legend
 legend(-15,-10, pch=22, pt.cex=1.5, leg.txt,
