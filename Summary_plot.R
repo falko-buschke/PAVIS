@@ -59,7 +59,8 @@ meta.dat.clean <- meta.dat[!duplicated(meta.dat),]
 head(meta.dat.clean)
 
 # Reshape the visitation data as a square PA x Year matrix
-sq.dat <-  xtabs(Visitors~ WDPAID + Year ,pavis)
+sq.dat <-  xtabs(Visitors+1~ WDPAID + Year ,pavis)
+sq.dat[xtabs(Visitors+1~ WDPAID + Year ,pavis)==0] <- NA
 
 # Note, the metadata is ordered alphabetically by country, which differs for the visitation matrix.
 # Thus, the data need to be aligned
@@ -68,8 +69,8 @@ visit.dat <- sq.dat[match(meta.dat.clean$WDPAID, row.names(sq.dat)),]
 # Check that the WDPAIDs are the same
 meta.dat.clean$WDPAID== row.names(visit.dat)
 
-# Calcualte the average annual visiation per protected area
-visit.ave <- apply(visit.dat,1,mean)
+# Calculate the average annual visiation per protected area
+visit.ave <- apply(visit.dat,1,function(x){mean(x,na.rm=T)})
 
 #############################################
 #                                           #
@@ -103,7 +104,7 @@ ISO.code <- names(table(meta.dat.clean$ISO))
 # Identify the full country names to match with base layers in 'maps' package
 country.name <- iso.expand(ISO.code)
 
-# The number of protected areas per countrye with visitor counts
+# The number of protected areas per country with visitor counts
 pas <-  as.numeric(table(meta.dat.clean$ISO))
 
 # Set plot margins
@@ -117,10 +118,10 @@ map("world", fill=T, col="lightgrey", lwd=1, border="white",
 ramp <- brewer.pal(6,"RdPu")
 
 # Identify breaks for the colour ramp
-brks <- as.numeric(cut(pas, c(0,1,2,5,10,25,50)))
+brks <- as.numeric(cut(pas, c(0,1,2,5,10,20,50)))
 
 # Labels for the legend
-leg.txt <- c("<1", "1-2", "2-5", "5-10", "10-25", ">25")
+leg.txt <- c("<1", "1-2", "2-5", "5-10", "10-20", ">20")
 
 # Match the values of each country to the colour ramp according to the predefined breaks
 # The maps package has a weird notation for certain countries with multiple geometries, hence
@@ -128,9 +129,9 @@ leg.txt <- c("<1", "1-2", "2-5", "5-10", "10-25", ">25")
 colss <- brks[match(gsub(":.*","",map("world", plot=FALSE)$names), country.name)]
 
 # Map the number of protected areas with visitor data per country
-map("world", fill=T, add=T,col=ramp[colss], lwd=1, border="white")#,xlim=c(-20,55), ylim=c(-40,40))
-# Add a polygon for Lesotho, which is covered by the South Africa Polygon
+map("world", fill=T, add=T,col=ramp[colss], lwd=1, border="white")
 map("world", "Lesotho", fill=T, add=T,col="lightgrey", lwd=1, border="white")
+
 
 # Plot a legend
 legend(-15,-10, pch=22, pt.cex=1.5, leg.txt,
@@ -179,7 +180,7 @@ for (i in 1: dim(visit.dat)[1]){
   # Vector of visitation data per protected areas
   vect <- visit.dat[i,]
   # If there are 5 or more records, fit a linear regression and estimate the slope parameter
-  if (length(vect[which(vect!=0)])>=5) {
+  if (length(vect[which(vect!=0)])>=6) {
     growth.rate[i] <- lm(vect[which(vect!=0)]~yrs[which(vect!=0)])$coefficients[2]/max(vect[which(vect!=0)])
   }
 }
@@ -198,7 +199,7 @@ points(meta.dat.clean$Longitude, meta.dat.clean$Latitude,  cex=abs(growth.rate)*
 # Add legend
 legend(-15,-10, pch=21, pt.cex=c(0.15,0.1,0.05,0.05,0.1,0.15)*20, c("0.15","0.1","0.05","-0.05","-0.1", "-0.15"),
        pt.bg=c(rgb(0,0,0.8,0.4),rgb(0,0,0.8,0.4),rgb(0,0,0.8,0.4), rgb(0.8,0,0,0.4),rgb(0.8,0,0,0.4),rgb(0.8,0,0,0.4))
-       , col=rgb(0.2,0.2,0.2,1), title="Growth Rate\n(>4 counts)",bty="n")
+       , col=rgb(0.2,0.2,0.2,1), title="Growth Rate\n(>5 counts)",bty="n")
 
 # Label panel
 mtext("f",cex=1.4, font=2,side = 3, adj = 0.05, line = 0.5)
@@ -265,3 +266,4 @@ mtext("h",cex=1.4, font=2,side = 3, adj = -0.1, line = 0.5)
 dev.off()
 
 #############################################################################################
+
