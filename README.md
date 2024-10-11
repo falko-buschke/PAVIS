@@ -8,7 +8,7 @@ This repository consists of **work in progress** on creating a Database of Afric
 ## File structure
 This respository contains three files:
   
-  1. `PAVIS_v0.1.csv` - A `.csv` file containing the information in the Database of African Protected Area Visitation (PAVIS)
+  1. `PAVIS_v0.2.csv` - A `.csv` file containing the information in the Database of African Protected Area Visitation (PAVIS)
   2. `Summary_plot.R` -- A fully-annotated R-script to reshape, process and summarise visitation data
   3. `Composite.png` -- A single Figure summarising the infromation in the PAVIS database
 
