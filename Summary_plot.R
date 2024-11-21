@@ -3,7 +3,7 @@ library(maps)
 library(RColorBrewer)
 
 # Read the data from the cleaned PAVIS Database
-pavis <- read.csv("PAVIS_v0.2.csv", na.strings = "NULL")
+pavis <- read.csv("PAVIS_v2.0.csv", na.strings = "NULL")
 
 # Create a new plot device
 png(filename="Composite.png",width=28,height=28,units="cm",res=300)
@@ -23,7 +23,7 @@ par(mai=c(0.85,0.65,0.3,0.10))
 
 # Histogram of visitation record per year
 hist(pavis$Year, main="", breaks=seq(1965, 2024,by=1),border="white",col="darkgrey",
-     ylim=c(0,180),las=1,xlab="Year", ylab="Number of visitation records",   cex.axis=1.1, cex.lab= 1.5, mgp=c(3.2,0.6,0))
+     ylim=c(0,180),las=1,xlab="Year", ylab="Number of visitation records",   cex.axis=1.3, cex.lab= 1.6, mgp=c(3.2,0.6,0))
 
 # Plot label
 mtext("a",cex=1.4, font=2,side = 3, adj = -0.1, line = 0.5)
@@ -39,7 +39,7 @@ par(mai=c(0.85,0.65,0.3,0.10))
 
 # Histogram of visitation records 
 hist(table(pavis$WDPAID), breaks=40, xlim=c(0,45),border="white",col="darkgrey",main="", las=1,ylim=c(0,60),
-     xlab="Number of annual visitation records", ylab="Number of protected areas",   cex.axis=1.1, cex.lab= 1.5, mgp=c(3.2,0.6,0))
+     xlab="Number of annual visitation records", ylab="Number of protected areas",   cex.axis=1.3, cex.lab= 1.6, mgp=c(3.2,0.6,0))
 
 # Add a vertical line showing >5 records (these are the data plotted in panel F)
 abline(v=5, lty=2, lwd=2)
@@ -87,7 +87,7 @@ par(mai=c(0.85,0.65,0.3,0.10))
 # Make plot of annual visitation vs. surface area of protected area (both axes on log-scale)
 plot(meta.dat.clean$REP_AREA,visit.ave, log="xy", las=1,pch=16, col=rgb(0.25,0.25,0.25,0.5),
      xlab=expression("Surface area (km"^ 2*")"), ylab="Average annual visitors",cex=1.8,   
-     cex.axis=1.1, cex.lab= 1.5, mgp=c(3.2,0.6,0), bty="n")
+     cex.axis=1.3, cex.lab= 1.6, mgp=c(3.2,0.6,0), bty="n")
 
 # Plot Label
 mtext("c",cex=1.4, font=2,side = 3, adj = -0.1, line = 0.5)
@@ -134,7 +134,7 @@ map("world", "Lesotho", fill=T, add=T,col="lightgrey", lwd=1, border="white")
 
 
 # Plot a legend
-legend(-15,-10, pch=22, pt.cex=1.5, leg.txt,
+legend(-15,-5, pch=22, pt.cex=1.8, leg.txt, cex=1.3,
        pt.bg=ramp, title="Number of\nprotected areas",bty="n")
 
 # Label the panel
@@ -158,7 +158,7 @@ points(meta.dat.clean$Longitude, meta.dat.clean$Latitude,  cex=log(visit.ave+5)/
        bg=rgb(0.2,0.2,0.8,0.2), col=rgb(0.2,0.2,0.2,1), lwd=0.8)
 
 # Add legend
-legend(-15,-10, pch=21, pt.cex=log(c(100000,10000,1000,100,10))/6, c("100000","10000","1000","100","10"),
+legend(-15,-5, pch=21, cex=1.3,pt.cex=log(c(100000,10000,1000,100,10))/6, c("100000","10000","1000","100","10"),
 pt.bg=rgb(0.2,0.2,0.8,0.2), col=rgb(0.2,0.2,0.2,1), title="Mean annual\nvisitors",bty="n")
 
 # Label plot
@@ -197,7 +197,7 @@ points(meta.dat.clean$Longitude, meta.dat.clean$Latitude,  cex=abs(growth.rate)*
        col=rgb(0.2,0.2,0.2,1), bg=ifelse(growth.rate>=0,rgb(0,0.6,0,0.4),rgb(0.8,0,0,0.4)), lwd=0.8)
 
 # Add legend
-legend(-15,-10, pch=21, pt.cex=c(0.15,0.1,0.05,0.05,0.1,0.15)*20, c("0.15","0.1","0.05","-0.05","-0.1", "-0.15"),
+legend(-15,-5, pch=21, cex=1.3,pt.cex=c(0.15,0.1,0.05,0.05,0.1,0.15)*20, c("0.15","0.1","0.05","-0.05","-0.1", "-0.15"),
        pt.bg=c(rgb(0,0.6,0,0.4),rgb(0,0.6,0,0.4),rgb(0,0.6,0,0.4), rgb(0.8,0,0,0.4),rgb(0.8,0,0,0.4),rgb(0.8,0,0,0.4))
        , col=rgb(0.2,0.2,0.2,1), title="Growth Rate\n(>5 counts)",bty="n")
 
@@ -221,7 +221,7 @@ GOV_TYPE <- factor(meta.dat.clean$GOV_TYPE , levels=rev(c("Federal or national m
 
 # Creat box plot
 boxplot(visit.ave+1~GOV_TYPE, outline=F, frame=F, horizontal=T,las=1, ylim=c(0,80000),log="",lty=1,ylab="", 
-        cex.axis=1.1, cex.lab= 1.5, mgp=c(3.2,0.6,0),xlab= "Average annual visitors", col="orange")
+        cex.axis=1.3, cex.lab= 1.6, mgp=c(3.2,0.6,0),xlab= "Average annual visitors", col="orange")
 
 # Add points for individual protected areas
 stripchart(visit.ave+1~GOV_TYPE,
@@ -247,8 +247,8 @@ par(mai=c(0.85,0.65,0.3,0.10))
 IUCN_Cat <- factor( meta.dat.clean$IUCN_Cat , levels=rev(c("Ib", "II", "III", "IV", "V", "VI", "Not Reported", "Not Applicable")))
 
 # Make boxplot
-boxplot(visit.ave+1~IUCN_Cat, outline=F, frame=F,,horizontal=T,las=1, ylim=c(0,60000),log="",lty=1,ylab="", 
-        cex.axis=1.1, cex.lab= 1.5, mgp=c(3.2,0.6,0),xlab= "Average annual visitors", col="orange")
+boxplot(visit.ave+1~IUCN_Cat, outline=F, frame=F,horizontal=T,las=1, ylim=c(0,80000),log="",lty=1,ylab="", 
+        cex.axis=1.3, cex.lab= 1.6, mgp=c(3.2,0.6,0),xlab= "Average annual visitors", col="orange")
 
 # Add poiunts for individual protectedd areas
 stripchart(visit.ave+1~IUCN_Cat,
@@ -264,6 +264,9 @@ mtext("h",cex=1.4, font=2,side = 3, adj = -0.1, line = 0.5)
 
 # Close the plot device and save the image
 dev.off()
+
+#############################################################################################
+
 
 #############################################################################################
 
