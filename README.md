@@ -5,7 +5,8 @@ This repository consists of **work in progress** on creating a Database of Afric
 
 Background infromation is presented in the manuscript:
 
-* Buschke, F., Capitani, C., Schägner, P., Nsengiyumva, C., Okelo, H., Cissé, O., & Snyman, S. (*In preparation*). A dataset of pre-pandemic African protected area visitation.
+* Buschke, F., Capitani, C., Schägner, P., Nsengiyumva, C., Okelo, H., Cissé, O., & Snyman, S. (*In preparation*). A dataset of pre-pandemic African protected area visitation. [![DOI](https://zenodo.org/badge/852767543.svg)](https://doi.org/10.5281/zenodo.14356511)
+
 
 The content is accurate as of 21 November 2024. Equiries can be directed to `falko.buschke@gmail.com`
 
