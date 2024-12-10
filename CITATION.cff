@@ -1,24 +1,79 @@
-cff-version: 1.0
-message: "If you use this software, please cite it as below."
-authors:
-  - family-names: Buschke
-    given-names: Falko
-    orcid: https://orcid.org/0000-0003-1167-7810
-  - family-names: Capitani
-    given-names: Claudia
-  - family-names: Schägner
-    given-names: Philipp
-  - family-names: Nsengiyumva
-    given-names: Christophe
-  - family-names: Okelo
-    given-names: Hellen
-  - family-names: Cissé
-    given-names: Oumar
-  - family-names: Snyman
-    given-names: Susan
-title: "Database of African Protected Area Visitation (PAVIS)"
-version: v1.0
-identifiers:
-  - type: doi
-    value: 10.5281/zenodo.14356511
-date-released: 2024-12-10
+# This CITATION.cff reference content was generated from Zotero.
+references:
+  - title: >-
+      A dataset of pre-pandemic African protected area visitation
+    abstract: |
+      When people visit protected areas, their presence can amplify public support for conservation and their spending closes conservation finance gaps and feeds local economies. Across Africa, protected areas are often presented as engines for poverty alleviation and rural development. Yet visitation data remains scarce for most of the continent. Here we present a dataset of African protected area visitation obtained from government sources as well as peer-reviewed and grey literature. The spatially explicit dataset includes 4,216 records from 341 protected areas in 34 countries. The earliest visitor counts date back to 1965, but the majority (78%) stem from between the years 2000 and 2020. While 22% of protected areas only have visitation data for a single year, the median protected area has six years of visitation data, facilitating temporal analyses. Moreover, the dataset is compatible with the World Database of Protected Areas, making it possible to compare visitation across governance types and management categories. Ultimately, the dataset provides baselines for post-pandemic nature tourism recovery and enables analyses of the factors determining protected area visitation.
+    type: dataset
+    license: Creative Commons Attribution 4.0 International
+    version: v1.0
+    copyright: Creative Commons Attribution 4.0 International
+    database: DOI.org (Datacite)
+    date-accessed: 2024-12-10T10:47:43Z
+    repository: Zenodo
+    url: https://zenodo.org/doi/10.5281/zenodo.14356511
+    authors: 
+      - family-names: Buschke
+        given-names: Falko T.
+      - family-names: Capitani
+        given-names: Claudia
+      - family-names: Schägner
+        given-names: Jan Philipp
+      - family-names: Nsengiyumva
+        given-names: Christophe
+      - family-names: Okelo
+        given-names: Hellen
+      - family-names: Cissé
+        given-names: Oumar
+      - family-names: Snyman
+        given-names: Susan
+    editors: 
+      - family-names: Buschke
+        given-names: Falko T.
+      - family-names: Capitani
+        given-names: Claudia
+      - family-names: Schägner
+        given-names: Jan Philipp
+      - family-names: Nsengiyumva
+        given-names: Christophe
+      - family-names: Okelo
+        given-names: Hellen
+      - family-names: Cissé
+        given-names: Oumar
+      - family-names: Snyman
+        given-names: Susan
+    recipients: 
+      - family-names: Buschke
+        given-names: Falko T.
+      - family-names: Capitani
+        given-names: Claudia
+      - family-names: Schägner
+        given-names: Jan Philipp
+      - family-names: Nsengiyumva
+        given-names: Christophe
+      - family-names: Okelo
+        given-names: Hellen
+      - family-names: Cissé
+        given-names: Oumar
+      - family-names: Snyman
+        given-names: Susan
+    translators: 
+      - family-names: Buschke
+        given-names: Falko T.
+      - family-names: Capitani
+        given-names: Claudia
+      - family-names: Schägner
+        given-names: Jan Philipp
+      - family-names: Nsengiyumva
+        given-names: Christophe
+      - family-names: Okelo
+        given-names: Hellen
+      - family-names: Cissé
+        given-names: Oumar
+      - family-names: Snyman
+        given-names: Susan
+    date-released: 2024-12-10
+    date-published: 2024-12-10
+    identifiers: 
+      - type: doi
+        value: 10.5281/zenodo.14356511
